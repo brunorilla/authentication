@@ -12,7 +12,7 @@ import {router} from '../auth.js';
  * Variables
  */
 const app = express();
-const port = process.env.PORT || "8000";
+const port = process.env.PORT || "3000";
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -91,7 +91,7 @@ app.use("/", router);
 GET /login
  */
 app.get('/login', function (req, res) {
-    res.send('<h1>Estás en la página de login</h1>');
+    res.render('index', {title: "Bienvenido"});
 });
 /*
 
@@ -101,6 +101,12 @@ GET /logout
 /*
 GET /callback
 */
+
+app.get('/', function (req, res) {
+    res.send('<h1>Bienvenido</h1>');
+});
+
+
 
 app.listen(port,()=>{
     console.log(`Listening on port: ${port}`);
